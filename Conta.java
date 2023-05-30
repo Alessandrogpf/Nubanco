@@ -3,7 +3,7 @@ public abstract class Conta {
     protected double saldo;
     protected double numConta;
     protected double numAgencia;
-    protected double limCredito;
+    
     
   
     //construtor
@@ -32,12 +32,7 @@ public abstract class Conta {
   public double getNumagencia(){
     return numAgencia;
   }
-  public double getLimcredito(){
-    return limCredito;
-  }
-  public double setLimcredito(double limCredito){
-    this.limCredito = limCredito;
-  }
+  
   
   
   // não coloquei nenhum setter porque creio que saldo, numConta e numAgencia não devem ser alterados pelo usuário
