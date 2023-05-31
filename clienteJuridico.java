@@ -1,4 +1,4 @@
-public class pessoaJuridica extends {
+public class ClienteJuridico extends Conta{ 
     /* ATRIBUTOS */
     private String CNPJ;
     private String comprovanteFaturamento;
