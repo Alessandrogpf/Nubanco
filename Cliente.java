@@ -3,23 +3,24 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Cliente {
-    /* ATRIBUTOS */
-    private String nome;
-    private String CPF;
-    private String dataNascimento;
-    private String dataAtual;
-    private int idade;
-    private String numeroCelular;
-    private String endereco;
-    private String login;
-    private String senha;
-    private String email;   
+	
+    /*************
+     * ATRIBUTOS *
+     *************/
+	
+    protected String nome;
+    protected String dataNascimento;
+    protected String dataAtual;
+    protected int idade;
+    protected String numeroCelular;
+    protected String endereco;
+    protected String login;
+    protected String senha;
+    protected String email;   
 
-    public Cliente(String nome, String CPF, String dataNascimento, String numeroCelular, String endereco, String login, String senha, String email)
+    public Cliente(String nome, String dataNascimento, String numeroCelular, String endereco, String login, String senha, String email)
     {	
         this.nome = nome;
-        this.CPF = CPF;
-        
         this.dataNascimento = dataNascimento;
         this.dataAtual = getDataAtual();
         this.idade = calcularIdade();
@@ -39,12 +40,14 @@ public class Cliente {
      * MÉTODOS *
      ***********/
 	
+    // DATA DE HOJE
     private String getDataAtual() {
         Date data = Calendar.getInstance().getTime(); // Retorna o tempo/data de hoje
-        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy"); // Formato da data; exemplo: 03/04/2004
+        SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy"); // Formato da data. Exemplo: 03/04/2004
         return formatoData.format(data);
     }
     
+    // CALCULO DE IDADE
     private int calcularIdade() {
     	
     	/**** DATA DE NASCIMENTO ****/
@@ -68,15 +71,56 @@ public class Cliente {
         return idade;
     }
     
+    // LOGIN CHECKER
+    public boolean loginCheck(String dado, String senha) {
+    	if ( (this.login == dado || this.email == dado) && this.senha == senha) {
+    		// Caso o dado(string) fornecido seja o email ou login correto
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
+    /** MODIFICADORES DE DADOS **/
+    // ALTERA NOME
+    public void alterarNome(String novoNome, String D, String S) {
+    	if (loginCheck(D, S) == true) {
+    		this.nome = novoNome;
+    	} else {
+    		;
+    	}
+    }
+    
+    // ALTERA SENHA
+    public void alterarSenha(String novaSenha, String D, String S) {
+    	if (loginCheck(D, S) == true) {
+    		this.senha = novaSenha;
+    	} else {
+    		;
+    	}
+    }
+    
+    // ALTERA LOGIN
+    public void alterarLogin(String novoLogin, String D, String S) {
+    	if (loginCheck(D, S) == true) {
+    		this.login = novoLogin;
+    	} else {
+    		;
+    	}
+    }
+    
+    // ALTERA EMAIL
+    public void alterarEmail(String novoEmail, String D, String S) {
+    	if (loginCheck(D, S) == true) {
+    		this.email = novoEmail;
+    	} else {
+    		;
+    	}
+    }
+    
     /********************* 
      * SETTERS E GETTERS *
      *********************/
-    
-    /** SETTERS **/
-    public void setNome(String novoNome) {
-    	this.nome = novoNome;
-    }
-    
     
     /** GETTERS **/
     public String getNome() {
@@ -89,6 +133,22 @@ public class Cliente {
     
     public String getDataNascimento() {
     	return dataNascimento;
+    }
+    
+    public String getCelular() {
+    	return numeroCelular;
+    }
+
+	public String getEndereco() {
+    	return endereco;
+    }
+    
+    public String getLogin() {
+    	return login;
+    }
+
+	public String getEmail() {
+    	return email;
     }
 
 }
