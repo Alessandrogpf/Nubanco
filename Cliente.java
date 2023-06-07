@@ -2,27 +2,29 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Cliente {
-	
-    /*************
+abstract class Cliente {
+     /*************
      * ATRIBUTOS *
      *************/
-	
     protected String nome;
     protected String dataNascimento;
     protected String dataAtual;
     protected int idade;
+    
     protected String numeroCelular;
     protected String endereco;
     protected String login;
     protected String senha;
-    protected String email;   
-
+    protected String email; 
+    
+    /*CONSTRUTOR*/
     public Cliente(String nome, String dataNascimento, String numeroCelular, String endereco, String login, String senha, String email)
     {	
         this.nome = nome;
         this.dataNascimento = dataNascimento;
+        
         this.dataAtual = getDataAtual();
+        
         this.idade = calcularIdade();
         
     	if (idade < 18) {
@@ -71,58 +73,18 @@ public class Cliente {
         return idade;
     }
     
-    // LOGIN CHECKER
-    public boolean loginCheck(String dado, String senha) {
-    	if ( (this.login == dado || this.email == dado) && this.senha == senha) {
-    		// Caso o dado(string) fornecido seja o email ou login correto
-    		return true;
-    	} else {
-    		return false;
-    	}
-    }
-    
-    /** MODIFICADORES DE DADOS **/
-    // ALTERA NOME
-    public void alterarNome(String novoNome, String D, String S) {
-    	if (loginCheck(D, S) == true) {
-    		this.nome = novoNome;
-    	} else {
-    		;
-    	}
-    }
-    
-    // ALTERA SENHA
-    public void alterarSenha(String novaSenha, String D, String S) {
-    	if (loginCheck(D, S) == true) {
-    		this.senha = novaSenha;
-    	} else {
-    		;
-    	}
-    }
-    
-    // ALTERA LOGIN
-    public void alterarLogin(String novoLogin, String D, String S) {
-    	if (loginCheck(D, S) == true) {
-    		this.login = novoLogin;
-    	} else {
-    		;
-    	}
-    }
-    
-    // ALTERA EMAIL
-    public void alterarEmail(String novoEmail, String D, String S) {
-    	if (loginCheck(D, S) == true) {
-    		this.email = novoEmail;
-    	} else {
-    		;
-    	}
-    }
     
     /********************* 
      * SETTERS E GETTERS *
      *********************/
     
     /** GETTERS **/
+    public void getInfo() {
+    	System.out.println("Nome: " + getNome());
+    	System.out.println("Idade: " + getIdade());
+    	System.out.println("Endereco: " + getEndereco());
+    }
+    
     public String getNome() {
     	return nome;
     }
@@ -138,17 +100,16 @@ public class Cliente {
     public String getCelular() {
     	return numeroCelular;
     }
-
-	public String getEndereco() {
-    	return endereco;
+    
+    public String getEmail() {
+    	return email;
     }
     
     public String getLogin() {
     	return login;
     }
-
-	public String getEmail() {
-    	return email;
+    
+    public String getEndereco() {
+    	return endereco;
     }
-
 }
