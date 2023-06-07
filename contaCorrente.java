@@ -1,16 +1,38 @@
 public class contaCorrente extends Conta {
-    protected double limCredito;
+  /*************
+   * ATRIBUTOS *
+   *************/
+  private double limCredito;
 
-    //construtor
-    public contaCorrente(double saldo, double numConta, double numAgencia, String nomeTitular, double limCredito){
-        super(saldo, numConta, numAgencia, nomeTitular);
-        this.limCredito = limCredito;
+  /*CONSTRUTOR*/
+  public contaCorrente(double saldo, double numConta, double numAgencia, Cliente nomeTitular, double limCredito){
+    super(saldo, numConta, numAgencia, nomeTitular);
+    this.limCredito = limCredito;
+  }
+
+  /***********
+   * MÉTODOS *
+   ***********/
+
+  public void fazerPix(String chavePix, double valor) {
+    if (valor > 0 && valor <= saldo) {
+      saldo -= valor;
+      System.out.println("PIX realizado!");
+      System.out.println("Chave PIX: " + chavePix);
+    }else {
+      System.out.println("PIX inválido. Saldo insuficiente ou valor inválido.");
+    }
+  }
+
+  /********************* 
+   * SETTERS E GETTERS *
+   *********************/
+  
+  public double getLimcredito(){
+      return limCredito;
     }
 
-    public double getLimcredito(){
-        return limCredito;
-      }
-    public double setLimcredito(double limCredito){
-        this.limCredito = limCredito;
-      }
+  public void setLimCredito(double limCredito){
+      this.limCredito = limCredito;
+    }
 }
