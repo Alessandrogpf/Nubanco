@@ -1,12 +1,18 @@
 public class contaPoupanca extends Conta {
-    /* Atributos */
+  /*************
+  * ATRIBUTOS *
+  *************/
   private double taxaRendimento; // Rendimento da poupança do mês
-
-  public contaPoupanca(double saldo, double numConta, double numAgencia, String nomeTitular, double taxaRendimento){
+  
+  /*CONSTRUTOR*/
+  public contaPoupanca(double saldo, String numConta, String numAgencia, Cliente nomeTitular, double taxaRendimento){
     super(saldo, numConta, numAgencia, nomeTitular);
     this.taxaRendimento = taxaRendimento;
   }
 
+  /********************* 
+   * SETTERS E GETTERS *
+   *********************/
   public double getTaxaRendimento(){
     return taxaRendimento;
   }
